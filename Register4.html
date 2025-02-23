@@ -3,232 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт Kaspersky</title>
+    <title>Ноутбуки</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        h1 {
+            background-color: #f4f4f9;
             color: #333;
+        }
+        h1 {
             text-align: center;
+            color: #444;
         }
-
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border-radius: 10px;
-        }
-
-        .section h1 {
-            color: #fff;
-        }
-
-        input {
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            width: 100%;
-            max-width: 300px;
-        }
-
         button {
+            display: block;
+            margin: 20px auto;
             padding: 10px 20px;
+            font-size: 16px;
             background-color: #007bff;
             color: white;
             border: none;
-            cursor: pointer;
             border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-
         button:hover {
             background-color: #0056b3;
         }
-
-        .feedback-form {
-            margin-bottom: 30px;
+        .laptops {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
-
-        .feedback-form input,
-        .feedback-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .laptops.show {
+            display: block;
+            opacity: 1;
         }
-
-        .feedback-form button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .feedback-form button:hover {
-            background-color: #0056b3;
-        }
-
-        .rating label {
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .reviews {
-            margin-top: 30px;
-        }
-
-        .review-item {
-            padding: 15px;
+        .laptop {
             border: 1px solid #ddd;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .review-item h3 {
+        .laptop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .laptop h3 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 20px;
             color: #007bff;
         }
-
-        .review-item p {
-            margin-top: 10px;
+        .laptop p {
+            margin: 5px 0;
+            font-size: 14px;
             color: #555;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Раздел для регистрации -->
-    <div class="section" id="register">
-        <h1>Регистрация</h1>
-        <form method="post">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required><br>
+    <h1>Список ноутбуков</h1>
+    <button onclick="showLaptops()">Показать ноутбуки</button>
 
-            <label for="password">Пароль:</label>
-            <input type="password" name="password" id="password" required><br>
-
-            <button type="submit">Зарегистрироваться</button>
-        </form>
-        <p><a href="#login" style="color: #fff;">Уже есть аккаунт? Войти</a></p>
-    </div>
-
-    <!-- Раздел для входа -->
-    <div class="section" id="login">
-        <h1>Вход</h1>
-        <form method="post">
-            <label for="emailLogin">Email:</label>
-            <input type="email" name="email" id="emailLogin" required><br>
-
-            <label for="passwordLogin">Пароль:</label>
-            <input type="password" name="password" id="passwordLogin" required><br>
-
-            <button type="submit" onclick="openFile(event)">Войти</button>
-        </form>
-        <p><a href="#register" style="color: #fff;">Нет аккаунта? Зарегистрироваться</a></p>
-    </div>
-
-    <!-- Форма для добавления отзыва -->
-    <div class="feedback-form">
-        <input type="text" id="name" placeholder="Ваше имя" required>
-        <textarea id="reviewText" rows="5" placeholder="Оставьте ваш отзыв" required></textarea>
-        <div class="rating">
-            <label>
-                <input type="radio" name="rating" value="1" required> 1 звезда
-            </label>
-            <label>
-                <input type="radio" name="rating" value="2"> 2 звезды
-            </label>
-            <label>
-                <input type="radio" name="rating" value="3"> 3 звезды
-            </label>
-            <label>
-                <input type="radio" name="rating" value="4"> 4 звезды
-            </label>
-            <label>
-                <input type="radio" name="rating" value="5"> 5 звезд
-            </label>
+    <div class="laptops" id="laptops">
+        <div class="laptop fade-in">
+            <h3>Ноутбук 1: Dell Inspiron</h3>
+            <p>Цена: 250 000 ₸</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
         </div>
-        <button onclick="submitReview()">Отправить отзыв</button>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 2: HP Pavilion</h3>
+            <p>Цена: 225 000 ₸</p>
+            <p>Процессор: AMD Ryzen 5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 256 ГБ SSD</p>
+            <p>Экран: 14 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 3: MacBook Air</h3>
+            <p>Цена: 450 000 ₸</p>
+            <p>Процессор: Apple M1</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 13.3 дюйма</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 4: Asus ZenBook</h3>
+            <p>Цена: 375 000 ₸</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 14 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 5: Lenovo ThinkPad</h3>
+            <p>Цена: 300 000 ₸</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 6: Acer Predator</h3>
+            <p>Цена: 600 000 ₸</p>
+            <p>Процессор: Intel Core i9</p>
+            <p>Оперативная память: 32 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 17.3 дюйма</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 7: Microsoft Surface Laptop</h3>
+            <p>Цена: 425 000 ₸</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 256 ГБ SSD</p>
+            <p>Экран: 13.5 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 8: Razer Blade 15</h3>
+            <p>Цена: 750 000 ₸</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 9: Samsung Galaxy Book Pro</h3>
+            <p>Цена: 350 000 ₸</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 13.3 дюйма</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 10: MSI GE76 Raider</h3>
+            <p>Цена: 700 000 ₸</p>
+            <p>Процессор: Intel Core i9</p>
+            <p>Оперативная память: 32 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 17.3 дюйма</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 11: Huawei MateBook D</h3>
+            <p>Цена: 280 000 ₸</p>
+            <p>Процессор: AMD Ryzen 7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop fade-in">
+            <h3>Ноутбук 12: Xiaomi Mi Notebook Pro</h3>
+            <p>Цена: 320 000 ₸</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 14 дюймов</p>
+        </div>
     </div>
 
-    <!-- Раздел с отзывами -->
-    <div class="reviews" id="reviewsList">
-        <!-- Отзывы будут добавляться сюда -->
-    </div>
-</div>
-
-<script>
-    function loadReviews() {
-        const savedReviews = localStorage.getItem('reviews');
-        return savedReviews ? JSON.parse(savedReviews) : [];
-    }
-
-    let reviews = loadReviews();
-
-    function submitReview() {
-        const name = document.getElementById('name').value;
-        const reviewText = document.getElementById('reviewText').value;
-        const rating = document.querySelector('input[name="rating"]:checked')?.value;
-        const date = new Date().toLocaleDateString(); // Получаем текущую дату
-
-        if (name && reviewText && rating) {
-            reviews.push({ name, reviewText, rating, date });
-
-            localStorage.setItem('reviews', JSON.stringify(reviews));
-            displayReviews();
-
-            document.getElementById('name').value = '';
-            document.getElementById('reviewText').value = '';
-            document.querySelector('input[name="rating"]:checked').checked = false;
-        } else {
-            alert('Пожалуйста, заполните все поля!');
+    <script>
+        function showLaptops() {
+            const laptopsDiv = document.getElementById("laptops");
+            laptopsDiv.classList.toggle("show");
         }
-    }
-
-    function displayReviews() {
-        const reviewsList = document.getElementById('reviewsList');
-        reviewsList.innerHTML = '';
-
-        reviews.forEach((review) => {
-            const reviewItem = document.createElement('div');
-            reviewItem.classList.add('review-item');
-            reviewItem.innerHTML = `
-                <h3>${review.name} <span style="font-size: 0.8em; color: gray;">(${review.date})</span></h3>
-                <p>${review.reviewText}</p>
-                <p>Рейтинг: ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
-            `;
-            reviewsList.appendChild(reviewItem);
-        });
-    }
-
-    displayReviews();
-
-    function openFile(event) {
-        event.preventDefault();
-        window.location.href = "https://darumenchik.github.io/kasperov228/Kasperov.html"; // Путь к локальному файлу
-    }
-</script>
+    </script>
 
 </body>
 </html>
