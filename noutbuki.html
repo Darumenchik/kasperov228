@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ноутбуки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .laptops {
+            display: none;
+            margin-top: 20px;
+        }
+        .laptop {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .laptop h3 {
+            margin: 0;
+        }
+        .laptop p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Список ноутбуков</h1>
+    <button onclick="showLaptops()">Показать ноутбуки</button>
+
+    <div class="laptops" id="laptops">
+        <div class="laptop">
+            <h3>Ноутбук 1: Dell Inspiron</h3>
+            <p>Цена: 50 000 руб.</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 2: HP Pavilion</h3>
+            <p>Цена: 45 000 руб.</p>
+            <p>Процессор: AMD Ryzen 5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 256 ГБ SSD</p>
+            <p>Экран: 14 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 3: MacBook Air</h3>
+            <p>Цена: 90 000 руб.</p>
+            <p>Процессор: Apple M1</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 13.3 дюйма</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 4: Asus ZenBook</h3>
+            <p>Цена: 75 000 руб.</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 14 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 5: Lenovo ThinkPad</h3>
+            <p>Цена: 60 000 руб.</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 6: Acer Predator</h3>
+            <p>Цена: 120 000 руб.</p>
+            <p>Процессор: Intel Core i9</p>
+            <p>Оперативная память: 32 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 17.3 дюйма</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 7: Microsoft Surface Laptop</h3>
+            <p>Цена: 85 000 руб.</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 256 ГБ SSD</p>
+            <p>Экран: 13.5 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 8: Razer Blade 15</h3>
+            <p>Цена: 150 000 руб.</p>
+            <p>Процессор: Intel Core i7</p>
+            <p>Оперативная память: 16 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 15.6 дюймов</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 9: Samsung Galaxy Book Pro</h3>
+            <p>Цена: 70 000 руб.</p>
+            <p>Процессор: Intel Core i5</p>
+            <p>Оперативная память: 8 ГБ</p>
+            <p>Жесткий диск: 512 ГБ SSD</p>
+            <p>Экран: 13.3 дюйма</p>
+        </div>
+        <div class="laptop">
+            <h3>Ноутбук 10: MSI GE76 Raider</h3>
+            <p>Цена: 140 000 руб.</p>
+            <p>Процессор: Intel Core i9</p>
+            <p>Оперативная память: 32 ГБ</p>
+            <p>Жесткий диск: 1 ТБ SSD</p>
+            <p>Экран: 17.3 дюйма</p>
+        </div>
+    </div>
+
+    <script>
+        function showLaptops() {
+            const laptopsDiv = document.getElementById("laptops");
+            laptopsDiv.style.display = laptopsDiv.style.display === "none" ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>
+
