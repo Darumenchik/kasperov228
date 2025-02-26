@@ -121,7 +121,7 @@
     <!-- Раздел для регистрации -->
     <div class="section" id="register">
         <h1>Регистрация</h1>
-        <form method="post">
+        <form method="post" onsubmit="register(event)">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required><br>
 
@@ -227,6 +227,11 @@
     function openFile(event) {
         event.preventDefault();
         window.location.href = 'https://darumenchik.github.io/kasperov228/Kasperov.html';
+    }
+
+    function register(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+        window.location.href = 'https://darumenchik.github.io/kasperov228/Parol.html'; // Замените на нужный URL
     }
 </script>
 
